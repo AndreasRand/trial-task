@@ -1,0 +1,12 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <include file="db/create/21032024_create_table_weather_data.xml"/>
+    <include file="db/create/21032024_create_table_regional_base_fees.xml"/>
+    <include file="db/create/21032024_create_table_air_temperature_extra_fees.xml"/>
+    <include file="db/create/21032024_create_table_weather_phenomenon_extra_fees.xml"/>
+    <include file="db/create/21032024_create_table_wind_speed_extra_fees.xml"/>
+
+</databaseChangeLog>

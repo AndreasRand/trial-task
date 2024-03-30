@@ -1,0 +1,61 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="21032024_create_table_weather_data" author="AndreasR">
+        <createTable tableName="weather_data">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="station_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="wmo_code" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="air_temperature" type="float">
+                <constraints nullable="false"/>
+            </column>
+            <column name="wind_speed" type="float">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phenomenon" type="varchar(255)"/>
+            <column name="timestamp" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex indexName="idx_wd_wmo_id" tableName="weather_data">
+            <column name="wmo_code"/>
+            <column name="id" descending="true"/>
+        </createIndex>
+
+        <createIndex indexName="idx_wd_wmo_timestamp" tableName="weather_data">
+            <column name="wmo_code"/>
+            <column name="timestamp" descending="true"/>
+        </createIndex>
+
+        <insert tableName="weather_data">
+            <column name="station_name" value="Tallinn-Harku"/>
+            <column name="wmo_code" value="26038"/>
+            <column name="air_temperature" value="-4.1"/>
+            <column name="wind_speed" value="0.7"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+        <insert tableName="weather_data">
+            <column name="station_name" value="Tartu-Tõravere"/>
+            <column name="wmo_code" value="26242"/>
+            <column name="air_temperature" value="-2.4"/>
+            <column name="wind_speed" value="1.0"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+        <insert tableName="weather_data">
+            <column name="station_name" value="Pärnu"/>
+            <column name="wmo_code" value="41803"/>
+            <column name="air_temperature" value="-0.1"/>
+            <column name="wind_speed" value="0.6"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

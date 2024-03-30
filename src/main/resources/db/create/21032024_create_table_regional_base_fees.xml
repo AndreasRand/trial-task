@@ -1,0 +1,93 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="21032024_create_table_regional_base_fees" author="AndreasR">
+        <createTable tableName="regional_base_fees">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="city_type" type="tinyint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vehicle_type" type="tinyint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="float">
+                <constraints nullable="false"/>
+            </column>
+            <column name="timestamp" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex indexName="idx_vehicle_city_id" tableName="regional_base_fees">
+            <column name="vehicle_type"/>
+            <column name="city_type"/>
+            <column name="id" descending="true"/>
+        </createIndex>
+
+        <createIndex indexName="idx_vehicle_city_timestamp" tableName="regional_base_fees">
+            <column name="vehicle_type"/>
+            <column name="city_type"/>
+            <column name="timestamp" descending="true"/>
+        </createIndex>
+
+        <insert tableName="regional_base_fees">
+            <column name="city_type" value="0"/>
+            <column name="vehicle_type" value="0"/>
+            <column name="amount" value="4"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+        <insert tableName="regional_base_fees">
+            <column name="city_type" value="0"/>
+            <column name="vehicle_type" value="1"/>
+            <column name="amount" value="3.5"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+        <insert tableName="regional_base_fees">
+            <column name="city_type" value="0"/>
+            <column name="vehicle_type" value="2"/>
+            <column name="amount" value="3"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+        <insert tableName="regional_base_fees">
+            <column name="city_type" value="1"/>
+            <column name="vehicle_type" value="0"/>
+            <column name="amount" value="3.5"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+        <insert tableName="regional_base_fees">
+            <column name="city_type" value="1"/>
+            <column name="vehicle_type" value="1"/>
+            <column name="amount" value="3"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+        <insert tableName="regional_base_fees">
+            <column name="city_type" value="1"/>
+            <column name="vehicle_type" value="2"/>
+            <column name="amount" value="2.5"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+        <insert tableName="regional_base_fees">
+            <column name="city_type" value="2"/>
+            <column name="vehicle_type" value="0"/>
+            <column name="amount" value="3"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+        <insert tableName="regional_base_fees">
+            <column name="city_type" value="2"/>
+            <column name="vehicle_type" value="1"/>
+            <column name="amount" value="2.5"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+        <insert tableName="regional_base_fees">
+            <column name="city_type" value="2"/>
+            <column name="vehicle_type" value="2"/>
+            <column name="amount" value="2"/>
+            <column name="timestamp" value="1710975712"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
