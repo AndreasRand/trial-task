@@ -23,10 +23,10 @@ public class WindSpeedExtraFeeEntity implements BaseRuleEntity {
     private ConditionType conditionType;
 
     @Column(name = "wind_speed_requirement", nullable = false)
-    private double windSpeedRequirement;
+    private Double windSpeedRequirement;
 
     @Column(name = "amount")
-    private double amount;
+    private Double amount;
 
     @Column(name = "timestamp", nullable = false)
     private Long timestamp;

@@ -23,7 +23,7 @@ public class RegionalBaseFeeEntity implements BaseRuleEntity {
     private CityType cityType;
 
     @Column(name = "amount", nullable = false)
-    private double amount;
+    private Double amount;
 
     @Column(name = "timestamp", nullable = false)
     private Long timestamp;
@@ -44,19 +44,19 @@ public class RegionalBaseFeeEntity implements BaseRuleEntity {
         this.vehicleType = vehicleType;
     }
 
-    public CityType getCity() {
+    public CityType getCityType() {
         return cityType;
     }
 
-    public void setCity(CityType cityType) {
+    public void setCityType(CityType cityType) {
         this.cityType = cityType;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

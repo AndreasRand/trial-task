@@ -26,7 +26,7 @@ public class WeatherPhenomenonExtraFeeEntity implements BaseRuleEntity {
     private String phenomenonPattern;
 
     @Column(name = "amount", nullable = false)
-    private double amount;
+    private Double amount;
 
     @Column(name = "timestamp", nullable = false)
     private Long timestamp;

@@ -1,10 +1,13 @@
 package com.fooddelivery.courierfeeservice.controller;
 
+import com.fooddelivery.courierfeeservice.controller.exceptions.ApiException;
+import com.fooddelivery.courierfeeservice.controller.exceptions.ApiExceptionErrorType;
 import com.fooddelivery.courierfeeservice.entities.rules.AirTemperatureExtraFeeEntity;
 import com.fooddelivery.courierfeeservice.entities.rules.BaseRuleEntity;
 import com.fooddelivery.courierfeeservice.entities.rules.RegionalBaseFeeEntity;
 import com.fooddelivery.courierfeeservice.entities.rules.WeatherPhenomenonExtraFeeEntity;
 import com.fooddelivery.courierfeeservice.entities.rules.WindSpeedExtraFeeEntity;
+import com.fooddelivery.courierfeeservice.models.ErrorResponse;
 import com.fooddelivery.courierfeeservice.models.FeeInputRequest;
 import com.fooddelivery.courierfeeservice.repositories.rules.AirTemperatureExtraFeeRepository;
 import com.fooddelivery.courierfeeservice.repositories.rules.RegionalBaseFeeRepository;
@@ -20,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
+
+import static com.fooddelivery.courierfeeservice.controller.exceptions.ApiExceptionErrorMessage.INVALID_INSERT_REQUEST_ERROR_MESSAGE;
 
 @RestController
 @RequestMapping("/api")
@@ -38,26 +43,15 @@ public class ApiController {
         this.weatherPhenomenonExtraFeeRepository = weatherPhenomenonExtraFeeRepository;
     }
 
-    /* TODO change the Response Object to have a JSON style
-    * - Error -
-    * {
-    *   type: "error_type",
-    *   error: "error_message"
-    * }
-    *
-    * - Calculated fee -
-    *
-    * {
-    *   amount: 123
-    * }
-    */
-
     @PostMapping("/calculateFee")
     public ResponseEntity<Object> calculateFee(@RequestBody FeeInputRequest input) {
         try {
             return ResponseEntity.ok().body(feeCalculationService.calculateTotalFee(input.getCity(), input.getVehicleType(), input.getTimestamp()));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (ApiException e) {
+            return (switch (e.getType()) {
+                case WEATHER_DATA_ABSENT, REGIONAL_BASE_FEE_ABSENT -> ResponseEntity.internalServerError();
+                default -> ResponseEntity.badRequest();
+            }).body(new ErrorResponse(e.getMessage(), e.getType().name()));
         }
     }
 
@@ -87,7 +81,7 @@ public class ApiController {
             entity.setTimestamp(Instant.now().getEpochSecond());
             return ResponseEntity.ok().body(repository.save(entity));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(new ErrorResponse(INVALID_INSERT_REQUEST_ERROR_MESSAGE, ApiExceptionErrorType.INVALID_INSERT_REQUEST.name()));
         }
     }
 }

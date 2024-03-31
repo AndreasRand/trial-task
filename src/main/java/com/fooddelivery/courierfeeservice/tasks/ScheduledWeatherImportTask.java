@@ -8,6 +8,7 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -17,13 +18,21 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.logging.Logger;
 
 @Component
 public class ScheduledWeatherImportTask {
-    private static final String WEATHER_DATA_API_URL = "https://www.ilmateenistus.ee/ilma_andmed/xml/observations.php";
-    private static final List<Long> WMOCODE_LIST = Arrays.asList(26038L, 26242L, 41803L);
+    private static String WEATHER_DATA_API_URL;
+    private static final Set<Long> WMOCODE_SET = new HashSet<>(Arrays.asList(26038L, 26242L, 41803L));
     private final WeatherDataRepository weatherDataRepository;
+    private static final Logger logger = Logger.getLogger(ScheduledWeatherImportTask.class.getName());
+
+    @Value("${weather_data_api}")
+    public void setWEATHER_DATA_API_URL(String value) {
+        WEATHER_DATA_API_URL = value;
+    }
 
     @Autowired
     public ScheduledWeatherImportTask(WeatherDataRepository weatherDataRepository) {
@@ -42,24 +51,23 @@ public class ScheduledWeatherImportTask {
 
             weatherDataResponse = unMarshalXml(response.body());
         } catch (Exception e) {
-            System.out.println("There was an error with getting data from the website, database was not filled.");
+            logger.severe("There was an error with getting data from the website");
             return;
         }
 
-        // TODO optimize lookup, WMOCODE_LIST could be a map instead
-        for (Station station : weatherDataResponse.getStationList().stream().filter(i -> WMOCODE_LIST.contains(i.getWMOCode())).toList()) {
-            WeatherDataEntity weatherDataEntity = new WeatherDataEntity();
-            weatherDataEntity.setStationName(station.getName());
-            weatherDataEntity.setWmocode(station.getWMOCode());
-            weatherDataEntity.setAirTemp(station.getAirTemp());
-            weatherDataEntity.setWindSpeed(station.getWindSpeed());
-            weatherDataEntity.setPhenomenon(station.getPhenomenon());
-            weatherDataEntity.setTimestamp(weatherDataResponse.getTimestamp());
-            weatherDataRepository.save(weatherDataEntity);
+        for (Station station : weatherDataResponse.getStationList().stream().filter(i -> WMOCODE_SET.contains(i.getWMOCode())).toList()) {
+            weatherDataRepository.save(
+                    new WeatherDataEntity.Builder()
+                            .setStationName(station.getName())
+                            .setWmocode(station.getWMOCode())
+                            .setAirTemp(station.getAirTemp())
+                            .setWindSpeed(station.getWindSpeed())
+                            .setPhenomenon(station.getPhenomenon())
+                            .setTimestamp(weatherDataResponse.getTimestamp())
+                            .build());
         }
 
-        // TODO change to log4j
-        System.out.println("Got weathers with timestamp: " + weatherDataResponse.getTimestamp());
+        logger.info("Got weathers with timestamp: " + weatherDataResponse.getTimestamp());
     }
 
     private WeatherDataResponse unMarshalXml(InputStream inputStream) throws JAXBException {

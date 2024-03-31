@@ -23,10 +23,10 @@ public class AirTemperatureExtraFeeEntity implements BaseRuleEntity {
     private ConditionType conditionType;
 
     @Column(name = "temperature_requirement", nullable = false)
-    private double tempRequirement;
+    private Double tempRequirement;
 
     @Column(name = "amount", nullable = false)
-    private double amount;
+    private Double amount;
 
     @Column(name = "timestamp", nullable = false)
     private Long timestamp;
@@ -55,7 +55,7 @@ public class AirTemperatureExtraFeeEntity implements BaseRuleEntity {
         this.conditionType = conditionType;
     }
 
-    public double getTempRequirement() {
+    public Double getTempRequirement() {
         return tempRequirement;
     }
 
@@ -63,7 +63,7 @@ public class AirTemperatureExtraFeeEntity implements BaseRuleEntity {
         this.tempRequirement = tempRequirement;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 

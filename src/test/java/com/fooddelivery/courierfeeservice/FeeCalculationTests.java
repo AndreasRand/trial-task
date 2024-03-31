@@ -83,8 +83,8 @@ public class FeeCalculationTests {
                         .setTimestamp(currentTimestamp)
                         .build());
 
-        assertEquals(3.5, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, null));
-        assertEquals(3.7, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, oldTimestamp));
+        assertEquals(3.5, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, null).getAmount());
+        assertEquals(3.7, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, oldTimestamp).getAmount());
 
         weatherDataRepository.save(
                 new WeatherDataEntity.Builder()
@@ -114,8 +114,8 @@ public class FeeCalculationTests {
                         .setTimestamp(currentTimestamp)
                         .build());
 
-        assertEquals(4, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, null));
-        assertEquals(4.2, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, oldTimestamp));
+        assertEquals(4, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, null).getAmount());
+        assertEquals(4.2, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, oldTimestamp).getAmount());
     }
 
     @Test
@@ -148,8 +148,8 @@ public class FeeCalculationTests {
                         .setTimestamp(currentTimestamp)
                         .build());
 
-        assertEquals(3.5, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, null));
-        assertEquals(3.7, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, oldTimestamp));
+        assertEquals(3.5, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, null).getAmount());
+        assertEquals(3.7, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, oldTimestamp).getAmount());
 
         weatherDataRepository.save(
                 new WeatherDataEntity.Builder()
@@ -213,8 +213,8 @@ public class FeeCalculationTests {
                         .setTimestamp(currentTimestamp)
                         .build());
 
-        assertEquals(3.5, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, null));
-        assertEquals(3.7, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, oldTimestamp));
+        assertEquals(3.5, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, null).getAmount());
+        assertEquals(3.7, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, oldTimestamp).getAmount());
 
         weatherDataRepository.save(
                 new WeatherDataEntity.Builder()
@@ -244,8 +244,8 @@ public class FeeCalculationTests {
                         .setTimestamp(currentTimestamp)
                         .build());
 
-        assertEquals(4, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, null));
-        assertEquals(4.2, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, oldTimestamp));
+        assertEquals(4, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, null).getAmount());
+        assertEquals(4.2, feeCalculationService.calculateTotalFee(CityType.TALLINN, VehicleType.BIKE, oldTimestamp).getAmount());
 
         weatherDataRepository.save(
                 new WeatherDataEntity.Builder()
