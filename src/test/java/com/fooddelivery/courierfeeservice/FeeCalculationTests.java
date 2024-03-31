@@ -13,7 +13,7 @@ import com.fooddelivery.courierfeeservice.repositories.rules.RegionalBaseFeeRepo
 import com.fooddelivery.courierfeeservice.repositories.rules.WeatherPhenomenonExtraFeeRepository;
 import com.fooddelivery.courierfeeservice.repositories.rules.WindSpeedExtraFeeRepository;
 import com.fooddelivery.courierfeeservice.repositories.weatherdata.WeatherDataRepository;
-import com.fooddelivery.courierfeeservice.services.FeeCalculationService;
+import com.fooddelivery.courierfeeservice.services.feecalculation.FeeCalculationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

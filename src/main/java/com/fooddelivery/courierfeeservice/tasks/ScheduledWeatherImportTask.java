@@ -39,6 +39,11 @@ public class ScheduledWeatherImportTask {
         this.weatherDataRepository = weatherDataRepository;
     }
 
+    /**
+     * Imports weather data from the Estonian Environment Agency's weather portal and saves it to the database.
+     * This method is scheduled to run periodically based on the configured cron expression.
+     * If an error occurs during data import, the error is logged and the method returns.
+     */
     @Scheduled(cron = "0 15 * * * *")
     public void importWeatherData() {
         HttpClient httpClient = HttpClient.newHttpClient();
@@ -51,7 +56,7 @@ public class ScheduledWeatherImportTask {
 
             weatherDataResponse = unMarshalXml(response.body());
         } catch (Exception e) {
-            logger.severe("There was an error with getting data from the website");
+            logger.severe("Unexpected response from the API website.");
             return;
         }
 
@@ -67,7 +72,7 @@ public class ScheduledWeatherImportTask {
                             .build());
         }
 
-        logger.info("Got weathers with timestamp: " + weatherDataResponse.getTimestamp());
+        logger.info("New weather data with timestamp: " + weatherDataResponse.getTimestamp());
     }
 
     private WeatherDataResponse unMarshalXml(InputStream inputStream) throws JAXBException {

@@ -1,4 +1,4 @@
-package com.fooddelivery.courierfeeservice.services;
+package com.fooddelivery.courierfeeservice.services.feecalculation;
 
 import com.fooddelivery.courierfeeservice.entities.rules.AirTemperatureExtraFeeEntity;
 import com.fooddelivery.courierfeeservice.entities.rules.RegionalBaseFeeEntity;
@@ -42,6 +42,15 @@ public class FeeCalculationService {
         this.airTemperatureExtraFeeRepository = airTemperatureExtraFeeRepository;
     }
 
+    /**
+     * Calculates the total delivery fee based on the given parameters.
+     *
+     * @param cityType The city enum for delivery (e.g., "Tallinn", "Tartu", "Pärnu").
+     * @param vehicleType The vehicle enum for delivery (e.g., "Car", "Scooter", "Bike").
+     * @param timestamp The timestamp for which to calculate the fee. If null, the latest data is used.
+     * @return The total delivery fee based on the input parameters and weather conditions.
+     * @throws ApiException If the current weather data is missing or not fit for the vehicle type.
+     */
     public TotalFee calculateTotalFee(CityType cityType, VehicleType vehicleType, Long timestamp) throws ApiException {
         WeatherDataEntity weatherDataEntity;
         if (timestamp == null) weatherDataEntity = weatherDataRepository.findFirstByWmocodeOrderByIdDesc(cityType.getValue()).orElse(null);
