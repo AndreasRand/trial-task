@@ -69,7 +69,8 @@ public class FeeCalculationTests {
                 new AirTemperatureExtraFeeEntity.Builder()
                         .setVehicleType(VehicleType.BIKE)
                         .setConditionType(ConditionType.FIRST_DEGREE)
-                        .setTempRequirement(0)
+                        .setMaxTempRequirement(0.0)
+                        .setMinTempRequirement(-10.0)
                         .setAmount(0.7)
                         .setTimestamp(oldTimestamp)
                         .build());
@@ -78,7 +79,8 @@ public class FeeCalculationTests {
                 new AirTemperatureExtraFeeEntity.Builder()
                         .setVehicleType(VehicleType.BIKE)
                         .setConditionType(ConditionType.FIRST_DEGREE)
-                        .setTempRequirement(0)
+                        .setMaxTempRequirement(0.0)
+                        .setMinTempRequirement(-10.0)
                         .setAmount(0.5)
                         .setTimestamp(currentTimestamp)
                         .build());
@@ -100,7 +102,7 @@ public class FeeCalculationTests {
                 new AirTemperatureExtraFeeEntity.Builder()
                         .setVehicleType(VehicleType.BIKE)
                         .setConditionType(ConditionType.SECOND_DEGREE)
-                        .setTempRequirement(-10)
+                        .setMaxTempRequirement(-11)
                         .setAmount(1.2)
                         .setTimestamp(oldTimestamp)
                         .build());
@@ -109,7 +111,7 @@ public class FeeCalculationTests {
                 new AirTemperatureExtraFeeEntity.Builder()
                         .setVehicleType(VehicleType.BIKE)
                         .setConditionType(ConditionType.SECOND_DEGREE)
-                        .setTempRequirement(-10)
+                        .setMaxTempRequirement(-11)
                         .setAmount(1)
                         .setTimestamp(currentTimestamp)
                         .build());
@@ -135,7 +137,8 @@ public class FeeCalculationTests {
                 new WindSpeedExtraFeeEntity.Builder()
                         .setVehicleType(VehicleType.BIKE)
                         .setConditionType(ConditionType.FIRST_DEGREE)
-                        .setWindSpeedRequirement(10)
+                        .setMinWindSpeedRequirement(10.0)
+                        .setMaxWindSpeedRequirement(20.0)
                         .setAmount(0.7)
                         .setTimestamp(oldTimestamp)
                         .build());
@@ -143,7 +146,8 @@ public class FeeCalculationTests {
                 new WindSpeedExtraFeeEntity.Builder()
                         .setVehicleType(VehicleType.BIKE)
                         .setConditionType(ConditionType.FIRST_DEGREE)
-                        .setWindSpeedRequirement(10)
+                        .setMinWindSpeedRequirement(10.0)
+                        .setMaxWindSpeedRequirement(20.0)
                         .setAmount(0.5)
                         .setTimestamp(currentTimestamp)
                         .build());
@@ -157,7 +161,7 @@ public class FeeCalculationTests {
                         .setWmocode(CityType.TALLINN.getValue())
                         .setAirTemp(10)
                         .setPhenomenon(null)
-                        .setWindSpeed(21)
+                        .setWindSpeed(25)
                         .setTimestamp(oldTimestamp)
                         .build());
 
@@ -165,7 +169,7 @@ public class FeeCalculationTests {
                 new WindSpeedExtraFeeEntity.Builder()
                         .setVehicleType(VehicleType.BIKE)
                         .setConditionType(ConditionType.DISALLOWED)
-                        .setWindSpeedRequirement(20)
+                        .setMinWindSpeedRequirement(21.0)
                         .setAmount(1)
                         .setTimestamp(oldTimestamp)
                         .build());
@@ -173,7 +177,7 @@ public class FeeCalculationTests {
                 new WindSpeedExtraFeeEntity.Builder()
                         .setVehicleType(VehicleType.BIKE)
                         .setConditionType(ConditionType.DISALLOWED)
-                        .setWindSpeedRequirement(20)
+                        .setMinWindSpeedRequirement(21.0)
                         .setAmount(1.2)
                         .setTimestamp(currentTimestamp)
                         .build());

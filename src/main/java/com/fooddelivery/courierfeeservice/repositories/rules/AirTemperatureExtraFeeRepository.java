@@ -17,8 +17,8 @@ public interface AirTemperatureExtraFeeRepository extends JpaRepository<AirTempe
             "   ORDER BY latest_id DESC " +
             ") latest_ids ON atef.id = latest_ids.latest_id " +
             "WHERE atef.vehicleType = :vehicleType " +
-            "AND atef.tempRequirement > :temperature " +
-            "ORDER BY atef.conditionType DESC LIMIT 1")
+            "AND atef.maxTempRequirement >= :temperature " +
+            "AND (atef.minTempRequirement IS NULL OR atef.minTempRequirement <= :temperature)")
     Optional<AirTemperatureExtraFeeEntity> findLatestByAirTemperatureAndVehicleType(@Param("temperature") double temperature, @Param("vehicleType") VehicleType vehicleType);
 
     @Query("SELECT atef " +
@@ -30,7 +30,7 @@ public interface AirTemperatureExtraFeeRepository extends JpaRepository<AirTempe
             "   ORDER BY latest_id DESC " +
             ") latest_ids ON atef.id = latest_ids.latest_id " +
             "WHERE atef.vehicleType = :vehicleType " +
-            "AND atef.tempRequirement > :temperature " +
-            "ORDER BY atef.conditionType DESC LIMIT 1")
+            "AND atef.maxTempRequirement >= :temperature " +
+            "AND (atef.minTempRequirement IS NULL OR atef.minTempRequirement <= :temperature)")
     Optional<AirTemperatureExtraFeeEntity> findByAirTemperatureAndVehicleTypeAndTimestamp(@Param("temperature") double temperature, @Param("vehicleType") VehicleType vehicleType, @Param("timestamp") Long timestamp);
 }

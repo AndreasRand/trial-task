@@ -25,7 +25,7 @@ public class ApiInsertionEndpointTests {
     @Rollback
     public void testATEFEndpoint() throws Exception {
         String requestData =
-                "{\"vehicleType\": 1, \"conditionType\": 0, \"tempRequirement\": -30, \"amount\": 10}";
+                "{\"vehicleType\": 1, \"conditionType\": 0, \"minTempRequirement\": -30, \"maxTempRequirement\":-10, \"amount\": 10}";
         mockMvc.perform(put("/api/insertATEF").contentType("application/json").content(requestData)).andExpect(status().isOk());
     }
 
@@ -33,7 +33,7 @@ public class ApiInsertionEndpointTests {
     @Rollback
     public void testWSEFEndpoint() throws Exception {
         String requestData =
-                "{\"vehicleType\": 1, \"conditionType\": 0, \"windSpeedRequirement\": 25, \"amount\": 10}";
+                "{\"vehicleType\": 1, \"conditionType\": 0, \"minWindSpeedRequirement\": 25, \"maxWindSpeedRequirement\": 40, \"amount\": 10}";
         mockMvc.perform(put("/api/insertWSEF").contentType("application/json").content(requestData)).andExpect(status().isOk());
     }
 

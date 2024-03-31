@@ -17,8 +17,8 @@ public interface WindSpeedExtraFeeRepository extends JpaRepository<WindSpeedExtr
             "   ORDER BY latest_id DESC " +
             ") latest_ids ON wsef.id = latest_ids.latest_id " +
             "WHERE wsef.vehicleType = :vehicleType " +
-            "AND wsef.windSpeedRequirement < :windSpeed " +
-            "ORDER BY wsef.conditionType DESC LIMIT 1")
+            "AND wsef.minWindSpeedRequirement <= :windSpeed " +
+            "AND (wsef.maxWindSpeedRequirement IS NULL OR wsef.maxWindSpeedRequirement >= :windSpeed)")
     Optional<WindSpeedExtraFeeEntity> findLatestByWindSpeedAndVehicleType(@Param("windSpeed") double windSpeed, @Param("vehicleType") VehicleType vehicleType);
 
     @Query("SELECT wsef " +
@@ -30,7 +30,7 @@ public interface WindSpeedExtraFeeRepository extends JpaRepository<WindSpeedExtr
             "   ORDER BY latest_id DESC " +
             ") latest_ids ON wsef.id = latest_ids.latest_id " +
             "WHERE wsef.vehicleType = :vehicleType " +
-            "AND wsef.windSpeedRequirement < :windSpeed " +
-            "ORDER BY wsef.conditionType DESC LIMIT 1")
+            "AND wsef.minWindSpeedRequirement <= :windSpeed " +
+            "AND (wsef.maxWindSpeedRequirement IS NULL OR wsef.maxWindSpeedRequirement >= :windSpeed)")
     Optional<WindSpeedExtraFeeEntity> findByWindSpeedAndVehicleTypeAndTimestamp(@Param("windSpeed") double windSpeed, @Param("vehicleType") VehicleType vehicleType, @Param("timestamp") Long timestamp);
 }

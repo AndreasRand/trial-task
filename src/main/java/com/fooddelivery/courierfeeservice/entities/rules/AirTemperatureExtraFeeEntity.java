@@ -12,8 +12,11 @@ public class AirTemperatureExtraFeeEntity extends BaseRuleEntity {
     @Column(name = "condition_type", nullable = false)
     private ConditionType conditionType;
 
-    @Column(name = "temperature_requirement", nullable = false)
-    private Double tempRequirement;
+    @Column(name = "max_temperature_requirement", nullable = false)
+    private Double maxTempRequirement;
+
+    @Column(name = "min_temperature_requirement")
+    private Double minTempRequirement;
 
     public ConditionType getConditionType() {
         return conditionType;
@@ -23,12 +26,20 @@ public class AirTemperatureExtraFeeEntity extends BaseRuleEntity {
         this.conditionType = conditionType;
     }
 
-    public Double getTempRequirement() {
-        return tempRequirement;
+    public Double getMaxTempRequirement() {
+        return maxTempRequirement;
     }
 
-    public void setTempRequirement(double tempRequirement) {
-        this.tempRequirement = tempRequirement;
+    public void setMaxTempRequirement(Double maxTempRequirement) {
+        this.maxTempRequirement = maxTempRequirement;
+    }
+
+    public Double getMinTempRequirement() {
+        return minTempRequirement;
+    }
+
+    public void setMinTempRequirement(Double minTempRequirement) {
+        this.minTempRequirement = minTempRequirement;
     }
 
     public AirTemperatureExtraFeeEntity() {}
@@ -37,7 +48,8 @@ public class AirTemperatureExtraFeeEntity extends BaseRuleEntity {
         this.id = builder.id;
         this.vehicleType = builder.vehicleType;
         this.conditionType = builder.conditionType;
-        this.tempRequirement = builder.tempRequirement;
+        this.maxTempRequirement = builder.maxTempRequirement;
+        this.minTempRequirement = builder.minTempRequirement;
         this.amount = builder.amount;
         this.timestamp = builder.timestamp;
     }
@@ -46,7 +58,8 @@ public class AirTemperatureExtraFeeEntity extends BaseRuleEntity {
         private Long id;
         private VehicleType vehicleType;
         private ConditionType conditionType;
-        private double tempRequirement;
+        private double maxTempRequirement;
+        private Double minTempRequirement;
         private double amount;
         private Long timestamp;
 
@@ -65,8 +78,13 @@ public class AirTemperatureExtraFeeEntity extends BaseRuleEntity {
             return this;
         }
 
-        public Builder setTempRequirement(double tempRequirement) {
-            this.tempRequirement = tempRequirement;
+        public Builder setMaxTempRequirement(double maxTempRequirement) {
+            this.maxTempRequirement = maxTempRequirement;
+            return this;
+        }
+
+        public Builder setMinTempRequirement(Double minTempRequirement) {
+            this.minTempRequirement = minTempRequirement;
             return this;
         }
 

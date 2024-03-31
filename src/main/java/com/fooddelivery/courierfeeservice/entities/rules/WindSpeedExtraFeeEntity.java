@@ -12,8 +12,11 @@ public class WindSpeedExtraFeeEntity extends BaseRuleEntity {
     @Column(name = "condition_type", nullable = false)
     private ConditionType conditionType;
 
-    @Column(name = "wind_speed_requirement", nullable = false)
-    private Double windSpeedRequirement;
+    @Column(name = "min_wind_speed_requirement", nullable = false)
+    private Double minWindSpeedRequirement;
+
+    @Column(name = "max_wind_speed_requirement")
+    private Double maxWindSpeedRequirement;
 
     public ConditionType getConditionType() {
         return conditionType;
@@ -23,12 +26,22 @@ public class WindSpeedExtraFeeEntity extends BaseRuleEntity {
         this.conditionType = conditionType;
     }
 
-    public double getWindSpeedRequirement() {
-        return windSpeedRequirement;
+    public Double getMinWindSpeedRequirement() {
+        return minWindSpeedRequirement;
     }
 
-    public void setWindSpeedRequirement(double windSpeedRequirement) {
-        this.windSpeedRequirement = windSpeedRequirement;
+    public WindSpeedExtraFeeEntity setMinWindSpeedRequirement(Double minWindSpeedRequirement) {
+        this.minWindSpeedRequirement = minWindSpeedRequirement;
+        return this;
+    }
+
+    public Double getMaxWindSpeedRequirement() {
+        return maxWindSpeedRequirement;
+    }
+
+    public WindSpeedExtraFeeEntity setMaxWindSpeedRequirement(Double maxWindSpeedRequirement) {
+        this.maxWindSpeedRequirement = maxWindSpeedRequirement;
+        return this;
     }
 
     public WindSpeedExtraFeeEntity() {}
@@ -37,7 +50,8 @@ public class WindSpeedExtraFeeEntity extends BaseRuleEntity {
         this.id = builder.id;
         this.vehicleType = builder.vehicleType;
         this.conditionType = builder.conditionType;
-        this.windSpeedRequirement = builder.windSpeedRequirement;
+        this.minWindSpeedRequirement = builder.minWindSpeedRequirement;
+        this.maxWindSpeedRequirement = builder.maxWindSpeedRequirement;
         this.amount = builder.amount;
         this.timestamp = builder.timestamp;
     }
@@ -46,7 +60,8 @@ public class WindSpeedExtraFeeEntity extends BaseRuleEntity {
         private Long id;
         private VehicleType vehicleType;
         private ConditionType conditionType;
-        private double windSpeedRequirement;
+        private double minWindSpeedRequirement;
+        private Double maxWindSpeedRequirement;
         private double amount;
         private Long timestamp;
 
@@ -65,8 +80,13 @@ public class WindSpeedExtraFeeEntity extends BaseRuleEntity {
             return this;
         }
 
-        public Builder setWindSpeedRequirement(double windSpeedRequirement) {
-            this.windSpeedRequirement = windSpeedRequirement;
+        public Builder setMinWindSpeedRequirement(double minWindSpeedRequirement) {
+            this.minWindSpeedRequirement = minWindSpeedRequirement;
+            return this;
+        }
+
+        public Builder setMaxWindSpeedRequirement(Double maxWindSpeedRequirement) {
+            this.maxWindSpeedRequirement = maxWindSpeedRequirement;
             return this;
         }
 

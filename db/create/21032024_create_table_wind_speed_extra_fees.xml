@@ -14,9 +14,10 @@
             <column name="condition_type" type="tinyint">
                 <constraints nullable="false"/>
             </column>
-            <column name="wind_speed_requirement" type="float">
+            <column name="min_wind_speed_requirement" type="float">
                 <constraints nullable="false"/>
             </column>
+            <column name="max_wind_speed_requirement" type="float"/>
             <column name="amount" type="float">
                 <constraints nullable="false"/>
             </column>
@@ -40,14 +41,15 @@
         <insert tableName="wind_speed_extra_fees">
             <column name="vehicle_type" value="2"/>
             <column name="condition_type" value="0"/>
-            <column name="wind_speed_requirement" value="10"/>
+            <column name="min_wind_speed_requirement" value="10"/>
+            <column name="max_wind_speed_requirement" value="20"/>
             <column name="amount" value="0.5"/>
             <column name="timestamp" value="1710975712"/>
         </insert>
         <insert tableName="wind_speed_extra_fees">
             <column name="vehicle_type" value="2"/>
             <column name="condition_type" value="2"/>
-            <column name="wind_speed_requirement" value="20"/>
+            <column name="min_wind_speed_requirement" value="21"/>
             <column name="amount" value="0"/>
             <column name="timestamp" value="1710975712"/>
         </insert>
