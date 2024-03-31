@@ -52,7 +52,7 @@ This project implements a delivery fee calculator for a food delivery applicatio
 - **URL**: `/api/ATEF`
 - **Method**: `POST`
 - **Request Body**:
-  ```json
+  ```json5
   {
     "vehicleType": "SCOOTER", // String: Vehicle type (Possible values: "CAR", "SCOOTER", "BIKE")
     "conditionType": "FIRST_DEGREE", // String: Condition type (Possible values: "FIRST_DEGREE", "SECOND_DEGREE", "DISALLOWED")
@@ -92,7 +92,7 @@ This project implements a delivery fee calculator for a food delivery applicatio
 - **URL**: `/api/WSEF`
 - **Method**: `POST`
 - **Request Body**:
-  ```json
+  ```json5
   {
     "vehicleType": "SCOOTER", // String: Vehicle type (Possible values: "CAR", "SCOOTER", "BIKE")
     "conditionType": "FIRST_DEGREE", // String: Condition type (Possible values: "FIRST_DEGREE", "SECOND_DEGREE", "DISALLOWED")
@@ -132,7 +132,7 @@ This project implements a delivery fee calculator for a food delivery applicatio
 - **URL**: `/api/WPEF`
 - **Method**: `POST`
 - **Request Body**:
-  ```json
+  ```json5
   {
     "vehicleType": "SCOOTER", // String: Vehicle type (Possible values: "CAR", "SCOOTER", "BIKE")
     "conditionType": "FIRST_DEGREE", // String: Condition type (Possible values: "FIRST_DEGREE", "SECOND_DEGREE", "DISALLOWED")
@@ -171,7 +171,7 @@ This project implements a delivery fee calculator for a food delivery applicatio
 - **URL**: `/api/RBF`
 - **Method**: `POST`
 - **Request Body**:
-  ```json
+  ```json5
   {
     "vehicleType": "SCOOTER", // String: Vehicle type (Possible values: "CAR", "SCOOTER", "BIKE")
     "cityType": "TALLINN", // String: City type (Possible values: "TALLINN", "TARTU", "PÄRNU")
@@ -209,7 +209,7 @@ This project implements a delivery fee calculator for a food delivery applicatio
 - **URL**: `/api/calculateFee`
 - **Method**: `POST`
 - **Request Body**:
-```json
+```json5
 {
   "vehicleType": "SCOOTER", // String: Vehicle type (Possible values: "CAR", "SCOOTER", "BIKE")
   "cityType": "TALLINN", // String: City type (Possible values: "TALLINN", "TARTU", "PÄRNU")
