@@ -1,7 +1,7 @@
 package com.fooddelivery.courierfeeservice.repositories.rules;
 
 import com.fooddelivery.courierfeeservice.entities.rules.WeatherPhenomenonExtraFeeEntity;
-import com.fooddelivery.courierfeeservice.models.VehicleType;
+import com.fooddelivery.courierfeeservice.models.rules.VehicleType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

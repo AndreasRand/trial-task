@@ -1,4 +1,7 @@
-package com.fooddelivery.courierfeeservice.models;
+package com.fooddelivery.courierfeeservice.models.requestinput;
+
+import com.fooddelivery.courierfeeservice.models.rules.CityType;
+import com.fooddelivery.courierfeeservice.models.rules.VehicleType;
 
 public class FeeInputRequest {
     private CityType cityType;

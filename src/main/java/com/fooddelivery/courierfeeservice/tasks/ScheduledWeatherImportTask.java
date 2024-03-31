@@ -1,8 +1,8 @@
 package com.fooddelivery.courierfeeservice.tasks;
 
 import com.fooddelivery.courierfeeservice.entities.weatherdata.WeatherDataEntity;
-import com.fooddelivery.courierfeeservice.models.Station;
-import com.fooddelivery.courierfeeservice.models.WeatherDataResponse;
+import com.fooddelivery.courierfeeservice.models.weatherdata.Station;
+import com.fooddelivery.courierfeeservice.models.weatherdata.WeatherDataResponse;
 import com.fooddelivery.courierfeeservice.repositories.weatherdata.WeatherDataRepository;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;

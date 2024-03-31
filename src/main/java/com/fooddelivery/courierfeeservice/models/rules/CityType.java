@@ -1,4 +1,4 @@
-package com.fooddelivery.courierfeeservice.models;
+package com.fooddelivery.courierfeeservice.models.rules;
 
 public enum CityType {
     TALLINN(26038L),

@@ -1,4 +1,4 @@
-package com.fooddelivery.courierfeeservice.models;
+package com.fooddelivery.courierfeeservice.models.weatherdata;
 
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;

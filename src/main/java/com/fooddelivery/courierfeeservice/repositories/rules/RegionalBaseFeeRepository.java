@@ -1,8 +1,8 @@
 package com.fooddelivery.courierfeeservice.repositories.rules;
 
 import com.fooddelivery.courierfeeservice.entities.rules.RegionalBaseFeeEntity;
-import com.fooddelivery.courierfeeservice.models.CityType;
-import com.fooddelivery.courierfeeservice.models.VehicleType;
+import com.fooddelivery.courierfeeservice.models.rules.CityType;
+import com.fooddelivery.courierfeeservice.models.rules.VehicleType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

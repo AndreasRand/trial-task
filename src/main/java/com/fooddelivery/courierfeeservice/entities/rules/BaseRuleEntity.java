@@ -1,6 +1,6 @@
 package com.fooddelivery.courierfeeservice.entities.rules;
 
-import com.fooddelivery.courierfeeservice.models.VehicleType;
+import com.fooddelivery.courierfeeservice.models.rules.VehicleType;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

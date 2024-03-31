@@ -1,12 +1,9 @@
 package com.fooddelivery.courierfeeservice.entities.rules;
 
-import com.fooddelivery.courierfeeservice.models.CityType;
-import com.fooddelivery.courierfeeservice.models.VehicleType;
+import com.fooddelivery.courierfeeservice.models.rules.CityType;
+import com.fooddelivery.courierfeeservice.models.rules.VehicleType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity

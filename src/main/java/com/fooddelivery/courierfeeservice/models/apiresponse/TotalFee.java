@@ -1,4 +1,4 @@
-package com.fooddelivery.courierfeeservice.models;
+package com.fooddelivery.courierfeeservice.models.apiresponse;
 
 public class TotalFee {
     private double amount;
