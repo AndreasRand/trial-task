@@ -11,38 +11,9 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "regional_base_fees")
-public class RegionalBaseFeeEntity implements BaseRuleEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "vehicle_type", nullable = false)
-    private VehicleType vehicleType;
-
+public class RegionalBaseFeeEntity extends BaseRuleEntity {
     @Column(name = "city_type", nullable = false)
     private CityType cityType;
-
-    @Column(name = "amount", nullable = false)
-    private Double amount;
-
-    @Column(name = "timestamp", nullable = false)
-    private Long timestamp;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public VehicleType getVehicleType() {
-        return vehicleType;
-    }
-
-    public void setVehicleType(VehicleType vehicleType) {
-        this.vehicleType = vehicleType;
-    }
 
     public CityType getCityType() {
         return cityType;
@@ -50,22 +21,6 @@ public class RegionalBaseFeeEntity implements BaseRuleEntity {
 
     public void setCityType(CityType cityType) {
         this.cityType = cityType;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public Long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
     }
 
     public RegionalBaseFeeEntity() {}

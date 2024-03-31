@@ -11,41 +11,12 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "wind_speed_extra_fees")
-public class WindSpeedExtraFeeEntity implements BaseRuleEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "vehicle_type", nullable = false)
-    private VehicleType vehicleType;
-
+public class WindSpeedExtraFeeEntity extends BaseRuleEntity {
     @Column(name = "condition_type", nullable = false)
     private ConditionType conditionType;
 
     @Column(name = "wind_speed_requirement", nullable = false)
     private Double windSpeedRequirement;
-
-    @Column(name = "amount")
-    private Double amount;
-
-    @Column(name = "timestamp", nullable = false)
-    private Long timestamp;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public VehicleType getVehicleType() {
-        return vehicleType;
-    }
-
-    public void setVehicleType(VehicleType vehicleType) {
-        this.vehicleType = vehicleType;
-    }
 
     public ConditionType getConditionType() {
         return conditionType;
@@ -61,22 +32,6 @@ public class WindSpeedExtraFeeEntity implements BaseRuleEntity {
 
     public void setWindSpeedRequirement(double windSpeedRequirement) {
         this.windSpeedRequirement = windSpeedRequirement;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public Long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
     }
 
     public WindSpeedExtraFeeEntity() {}

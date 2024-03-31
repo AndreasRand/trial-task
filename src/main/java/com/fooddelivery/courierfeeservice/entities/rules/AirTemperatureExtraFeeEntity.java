@@ -11,41 +11,12 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "air_temperature_extra_fees")
-public class AirTemperatureExtraFeeEntity implements BaseRuleEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "vehicle_type", nullable = false)
-    private VehicleType vehicleType;
-
+public class AirTemperatureExtraFeeEntity extends BaseRuleEntity {
     @Column(name = "condition_type", nullable = false)
     private ConditionType conditionType;
 
     @Column(name = "temperature_requirement", nullable = false)
     private Double tempRequirement;
-
-    @Column(name = "amount", nullable = false)
-    private Double amount;
-
-    @Column(name = "timestamp", nullable = false)
-    private Long timestamp;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public VehicleType getVehicleType() {
-        return vehicleType;
-    }
-
-    public void setVehicleType(VehicleType vehicleType) {
-        this.vehicleType = vehicleType;
-    }
 
     public ConditionType getConditionType() {
         return conditionType;
@@ -61,22 +32,6 @@ public class AirTemperatureExtraFeeEntity implements BaseRuleEntity {
 
     public void setTempRequirement(double tempRequirement) {
         this.tempRequirement = tempRequirement;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public Long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
     }
 
     public AirTemperatureExtraFeeEntity() {}
@@ -132,6 +87,4 @@ public class AirTemperatureExtraFeeEntity implements BaseRuleEntity {
             return new AirTemperatureExtraFeeEntity(this);
         }
     }
-
-
 }
