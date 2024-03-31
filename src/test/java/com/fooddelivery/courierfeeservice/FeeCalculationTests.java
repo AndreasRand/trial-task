@@ -33,8 +33,8 @@ public class FeeCalculationTests {
     private final FeeCalculationService feeCalculationService;
     private final WindSpeedExtraFeeRepository windSpeedExtraFeeRepository;
     private final WeatherPhenomenonExtraFeeRepository weatherPhenomenonExtraFeeRepository;
-    private static final long currentTimestamp = Instant.now().getEpochSecond();
-    private static final long oldTimestamp = currentTimestamp - 10000;
+    private final long currentTimestamp = Instant.now().getEpochSecond();
+    private final long oldTimestamp = currentTimestamp - 10000;
 
     @Autowired
     public FeeCalculationTests(WeatherDataRepository weatherDataRepository, AirTemperatureExtraFeeRepository airTemperatureExtraFeeRepository, WindSpeedExtraFeeRepository windSpeedExtraFeeRepository, WeatherPhenomenonExtraFeeRepository weatherPhenomenonExtraFeeRepository, FeeCalculationService feeCalculationService, RegionalBaseFeeRepository regionalBaseFeeRepository) {
@@ -54,7 +54,7 @@ public class FeeCalculationTests {
 
     @Test
     @Rollback
-    public void TestTempExtraFees() throws Exception {
+    public void testTempExtraFees() throws Exception {
         weatherDataRepository.save(
                 new WeatherDataEntity.Builder()
                         .setStationName("TALLINN")
@@ -120,7 +120,7 @@ public class FeeCalculationTests {
 
     @Test
     @Rollback
-    public void TestWindExtraFees() throws Exception {
+    public void testWindExtraFees() throws Exception {
         weatherDataRepository.save(
                 new WeatherDataEntity.Builder()
                         .setStationName("TALLINN")
@@ -184,7 +184,7 @@ public class FeeCalculationTests {
 
     @Test
     @Rollback
-    public void TestPhenomenonExtraFees() throws Exception {
+    public void testPhenomenonExtraFees() throws Exception {
         weatherDataRepository.save(
                 new WeatherDataEntity.Builder()
                         .setStationName("TALLINN")
