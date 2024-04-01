@@ -21,7 +21,7 @@ This project implements a delivery fee calculator for a food delivery applicatio
 
 ## Setup
 
-1. **Clone the Repository**: Clone the ATEF API repository to your local machine.
+1. **Clone the Repository**: Clone the repository to your local machine.
    ```bash
    git clone <repository_url>
    ```
@@ -36,7 +36,7 @@ This project implements a delivery fee calculator for a food delivery applicatio
    mvn test
    ```
 
-4. **Run the Application**: Start the ATEF API application locally.
+4. **Run the Application**: Start the application locally.
    ```bash
    mvn spring-boot:run
    ```
