@@ -26,16 +26,18 @@
             </column>
         </createTable>
 
-        <createIndex indexName="idx_ws_vehicle_condition_id" tableName="wind_speed_extra_fees">
+        <createIndex indexName="idx_ws_vehicle_maxTemp_minTemp" tableName="wind_speed_extra_fees">
             <column name="vehicle_type"/>
-            <column name="condition_type"/>
-            <column name="id" descending="true"/>
+            <column name="max_wind_speed_requirement"/>
+            <column name="min_wind_speed_requirement"/>
         </createIndex>
 
-        <createIndex indexName="idx_ws_vehicle_condition_timestamp" tableName="wind_speed_extra_fees">
-            <column name="vehicle_type"/>
+        <createIndex indexName="idx_ws_condition" tableName="wind_speed_extra_fees">
             <column name="condition_type"/>
-            <column name="timestamp" descending="true"/>
+        </createIndex>
+
+        <createIndex indexName="idx_ws_timestamp" tableName="weather_phenomenon_extra_fees">
+            <column name="timestamp"/>
         </createIndex>
 
         <insert tableName="wind_speed_extra_fees">

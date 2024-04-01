@@ -26,16 +26,18 @@
             </column>
         </createTable>
 
-        <createIndex indexName="idx_at_vehicle_condition_id" tableName="air_temperature_extra_fees">
+        <createIndex indexName="idx_at_vehicle_maxTemp_minTemp" tableName="air_temperature_extra_fees">
             <column name="vehicle_type"/>
-            <column name="condition_type"/>
-            <column name="id" descending="true"/>
+            <column name="max_temperature_requirement"/>
+            <column name="min_temperature_requirement"/>
         </createIndex>
 
-        <createIndex indexName="idx_at_vehicle_condition_timestamp" tableName="air_temperature_extra_fees">
-            <column name="vehicle_type"/>
+        <createIndex indexName="idx_at_condition" tableName="air_temperature_extra_fees">
             <column name="condition_type"/>
-            <column name="timestamp" descending="true"/>
+        </createIndex>
+
+        <createIndex indexName="idx_at_timestamp" tableName="air_temperature_extra_fees">
+            <column name="timestamp"/>
         </createIndex>
 
         <insert tableName="air_temperature_extra_fees">

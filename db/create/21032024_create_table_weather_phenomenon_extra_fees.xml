@@ -25,16 +25,17 @@
             </column>
         </createTable>
 
-        <createIndex indexName="idx_wp_vehicle_condition_id" tableName="weather_phenomenon_extra_fees">
-            <column name="vehicle_type"/>
+        <createIndex tableName="weather_phenomenon_extra_fees" indexName="idx_wp_condition_type">
             <column name="condition_type"/>
-            <column name="id" descending="true"/>
+        </createIndex>
+        
+        <createIndex tableName="weather_phenomenon_extra_fees" indexName="idx_wp_vehicleType_pattern">
+            <column name="vehicle_type"/>
+            <column name="phenomenon_pattern"/>
         </createIndex>
 
-        <createIndex indexName="idx_wp_vehicle_condition_timestamp" tableName="weather_phenomenon_extra_fees">
-            <column name="vehicle_type"/>
-            <column name="condition_type"/>
-            <column name="timestamp" descending="true"/>
+        <createIndex tableName="weather_phenomenon_extra_fees" indexName="idx_wp_timestamp">
+            <column name="timestamp"/>
         </createIndex>
 
         <insert tableName="weather_phenomenon_extra_fees">

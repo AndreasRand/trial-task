@@ -14,7 +14,6 @@ public interface WeatherPhenomenonExtraFeeRepository extends JpaRepository<Weath
             "JOIN (" +
             "   SELECT MAX(wpef2.id) as latest_id FROM weather_phenomenon_extra_fees wpef2 " +
             "   GROUP BY wpef2.condition_type " +
-            "   ORDER BY latest_id DESC " +
             ") latest_ids ON wpef.id = latest_ids.latest_id " +
             "WHERE REGEXP_LIKE(:phenomenon, wpef.phenomenon_pattern) " +
             "AND wpef.vehicle_type = :vehicleType " +
@@ -27,7 +26,6 @@ public interface WeatherPhenomenonExtraFeeRepository extends JpaRepository<Weath
             "   SELECT MAX(wpef2.id) as latest_id FROM weather_phenomenon_extra_fees wpef2 " +
             "   WHERE wpef2.timestamp <= :timestamp " +
             "   GROUP BY wpef2.condition_type " +
-            "   ORDER BY latest_id DESC " +
             ") latest_ids ON wpef.id = latest_ids.latest_id " +
             "WHERE REGEXP_LIKE(:phenomenon, wpef.phenomenon_pattern) " +
             "AND wpef.vehicle_type = :vehicleType " +
