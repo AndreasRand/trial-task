@@ -78,12 +78,8 @@ public class ATEFController {
 
     private boolean hasGapsInRanges(List<AirTemperatureExtraFeeEntity> entities) {
         for (int i = 0; i < entities.size()-1; i++) {
-            if (conditionalAbs(entities.get(i).getMinTempRequirement())+1 != conditionalAbs(entities.get(i+1).getMaxTempRequirement())) return true;
+            if (entities.get(i).getMinTempRequirement()-1 != entities.get(i+1).getMaxTempRequirement()) return true;
         }
         return false;
-    }
-
-    private Double conditionalAbs(Double value) {
-        return value < 0 ? Math.abs(value) : value;
     }
 }
